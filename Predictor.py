@@ -27,7 +27,7 @@ from keras.optimizers import adam
 nnscores = []
 forestscores = []
 svmscores = []
-epochs = 50000
+epochs = 2
 batchsize = 20000
 
 truelabels = []
@@ -58,21 +58,22 @@ class Get_Val_Acc(Callback):
 
 
 model = Sequential()
-model.add(Dense(1000, input_shape=(len(xtrain[0, :]),), activation='sigmoid'))
+model.add(Dense(1000, input_shape=(len(xtrain[0, :]),), activation='relu'))
 model.add(Dropout(0.1))
-model.add(Dense(500, activation='sigmoid'))
+model.add(Dense(500, activation='relu'))
 model.add(Dropout(0.1))
-model.add(Dense(1000, activation='sigmoid'))
+model.add(Dense(1000, activation='relu'))
 model.add(Dropout(0.1))
-model.add(Dense(300, activation='sigmoid'))
+model.add(Dense(300, activation='relu'))
 model.add(Dropout(0.1))
 model.add(Dense(1, activation='sigmoid'))
 a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 #a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(optimizer=a, loss='binary_crossentropy', metrics=['accuracy'])
 patience = 100
-tbCallBack = TensorBoard(log_dir='C:/Users/baseb/PycharmProjects/Dota2Predictor/', histogram_freq=0, batch_size=1, write_graph=True, write_grads=False, write_images=True, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
-earlyStop = EarlyStopping(monitor='val_acc', patience=patience, min_delta=0, verbose=0, mode='auto')
+
+tbCallBack = TensorBoard(log_dir='C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/Heros/', histogram_freq=2, write_graph=True, write_grads=True, write_images=True, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+earlyStop = EarlyStopping(monitor='val_acc', patience=patience, min_delta=0, verbose=2, mode='auto')
 #class_weight = {0 : 30975., 1: 29290.}
 
 acc = Get_Val_Acc()  # object used to find max acc of training
@@ -91,6 +92,7 @@ for i in range(0,len(predicted)):
         predictedlabels.append(0)
 truelabels = np.append(truelabels, yval)
 
+model.save('Heros')
 
 # evaluate the model
 #print("max validation %s: %.2f%%" % (model.metrics_names[1], acc.max_acc * 100))
@@ -158,12 +160,12 @@ np.set_printoptions(precision=2)
 
 # Plot non-normalized confusion matrix
 plt.figure()
-plot_confusion_matrix(cnf_matrix, classes=[0,1,2],
+plot_confusion_matrix(cnf_matrix, classes=[0,1],
                       title='Confusion matrix, without normalization')
 
 # Plot normalized confusion matrix
 plt.figure()
-plot_confusion_matrix(cnf_matrix, classes=[0,1,2], normalize=True,
+plot_confusion_matrix(cnf_matrix, classes=[0,1], normalize=True,
                      title='Normalized confusion matrix')
 
 plt.show()

@@ -3,16 +3,16 @@ import time
 import numpy as np
 
 
-tempLoad = np.load('traindataFinal.npy')
-Data = np.ndarray.tolist(tempLoad)
-lastCounter = np.load('counterFinal.npy')
+tempData = np.load('traindataFinal2.npy')
+Data = np.ndarray.tolist(tempData)
+lastCounter = np.load('counterFinal2.npy')
 
 #Data = []
 #lastCounter = 0
 
 api = dota2api.Initialise("9AD4E20AA4D2C0A43FA90ABB6E4AA5A6")
 api.set_raw_mode(1)
-numberOfMatches = 1000000
+numberOfMatches = 5000000
 numOfMat = numberOfMatches/100
 for i in range(1, int(numOfMat+1)):
     try:
@@ -23,7 +23,7 @@ for i in range(1, int(numOfMat+1)):
         continue
 
     lastCounter = lastCounter + 1
-    np.save('counterFinal',lastCounter)
+    np.save('counterFinal2',lastCounter)
     print(str(i*100) + "/"+ str(numberOfMatches))
     for j in range(0, 100):
         temp = m.get('matches');
@@ -42,10 +42,10 @@ for i in range(1, int(numOfMat+1)):
                 Data.append(Output)
                 D = np.asanyarray(Data)
 
-                np.save('traindataFinal', D)
+                np.save('traindataFinal2', D)
     print('Length Of Data Array', str(len(D)))
 #    MatchInfo = MatchInfo + m.get('matches')
-    time.sleep(2)
+    #time.sleep(1)
 
 print(np.shape(D))
 #trainData = np.memmap('traindataNew.mymemmap',dtype='float16',mode='w+',shape=np.size(D))
