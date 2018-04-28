@@ -2,16 +2,20 @@ from imblearn.over_sampling import SMOTE
 from collections import Counter
 import numpy as np
 import tensorflow as tf
+import os
 
-
-config = tf.ConfigProto()
+config = tf.ConfigProto(allow_soft_placement=False)
 config.gpu_options.allow_growth = True
 session = tf.Session(config=config)
 
-
-my_data = np.load('traindataNew.npy')
+# traindataNew.npy has all 10 heros
+my_data = np.load('traindata.npy')
 #USED TO BE 0:, 1:len(my_data)+1]
-d = my_data[0:, 1:len(my_data)+1]
+#Pull all data including fb time and total time
+#d = my_data[0:, 1:len(my_data)+1]
+
+#Pull just heros
+d = my_data[0:, 1:-2]
 l = my_data[0:, 0]
 
 
@@ -27,7 +31,7 @@ from keras.optimizers import adam
 nnscores = []
 forestscores = []
 svmscores = []
-epochs = 2
+epochs = 10000
 batchsize = 20000
 
 truelabels = []
@@ -58,11 +62,11 @@ class Get_Val_Acc(Callback):
 
 
 model = Sequential()
-model.add(Dense(1000, input_shape=(len(xtrain[0, :]),), activation='relu'))
-model.add(Dropout(0.1))
-model.add(Dense(500, activation='relu'))
+model.add(Dense(2000, input_shape=(len(xtrain[0, :]),), activation='relu'))
 model.add(Dropout(0.1))
 model.add(Dense(1000, activation='relu'))
+model.add(Dropout(0.1))
+model.add(Dense(500, activation='relu'))
 model.add(Dropout(0.1))
 model.add(Dense(300, activation='relu'))
 model.add(Dropout(0.1))
@@ -72,7 +76,10 @@ a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(optimizer=a, loss='binary_crossentropy', metrics=['accuracy'])
 patience = 100
 
-tbCallBack = TensorBoard(log_dir='C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/Heros/', histogram_freq=2, write_graph=True, write_grads=True, write_images=True, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/Heros/'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+tbCallBack = TensorBoard(log_dir=directory, histogram_freq=0, write_graph=True, write_grads=False, write_images=False)
 earlyStop = EarlyStopping(monitor='val_acc', patience=patience, min_delta=0, verbose=2, mode='auto')
 #class_weight = {0 : 30975., 1: 29290.}
 
