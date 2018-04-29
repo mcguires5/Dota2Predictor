@@ -18,6 +18,7 @@ d = my_data[0:, 1:-1]
 l = my_data[0:, 0]
 
 from keras import regularizers
+from keras.layers.normalization import BatchNormalization
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 #from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
@@ -28,8 +29,6 @@ from sklearn.utils import class_weight
 
 
 nnscores = []
-forestscores = []
-svmscores = []
 epochs = 2000
 batchsize = 20000
 
@@ -62,12 +61,22 @@ class Get_Val_Acc(Callback):
 
 model = Sequential()
 model.add(Dense(1000, input_shape=(len(xtrain[0, :]),), activation='sigmoid'))
+model.add(BatchNormalization())
 model.add(Dropout(0.1))
 model.add(Dense(500, activation='sigmoid'))
+model.add(BatchNormalization())
 model.add(Dropout(0.1))
 model.add(Dense(1000, activation='sigmoid'))
+model.add(BatchNormalization())
 model.add(Dropout(0.1))
 model.add(Dense(300, activation='sigmoid'))
+model.add(BatchNormalization())
+model.add(Dropout(0.1))
+model.add(Dense(500, activation='sigmoid'))
+model.add(BatchNormalization())
+model.add(Dropout(0.1))
+model.add(Dense(100, activation='sigmoid'))
+model.add(BatchNormalization())
 model.add(Dropout(0.1))
 model.add(Dense(1, activation='sigmoid'))
 a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
@@ -75,7 +84,7 @@ a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(optimizer=a, loss='binary_crossentropy', metrics=['accuracy'])
 patience = 100
 
-directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/HeroesDuration/5 Layer Original Architecture/'
+directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/HeroesDuration/7 Layer Architecture/'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
@@ -101,7 +110,7 @@ for i in range(0,len(predicted)):
         predictedlabels.append(0)
 truelabels = np.append(truelabels, yval)
 
-model.save('HeroesAndDuration.h5')
+model.save('HeroesDuration.h5')
 
 # evaluate the model
 #print("max validation %s: %.2f%%" % (model.metrics_names[1], acc.max_acc * 100))

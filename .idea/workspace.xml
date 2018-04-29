@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ae0a96-3270-4ec0-9f9a-41c5e0ace9a5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/Heros/events.out.tfevents.1524946683.DESKTOP-O0KQ4QH" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataCollecterFinal.py" afterPath="$PROJECT_DIR$/DataCollecterFinal.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HeroesAndDuration.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesAndDuration/4 Layer Smaller Architecture/events.out.tfevents.1524959685.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesAndDuration/5 Layer Original Architecture/events.out.tfevents.1524951855.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDuration/5 Layer Original Architecture/events.out.tfevents.1525015765.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDuration/5 Layer Original Architecture/events.out.tfevents.1525015820.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDurationFB/4 Layer Smaller Architecture/events.out.tfevents.1524962553.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDurationFB/4 Layer Smaller Architecture/events.out.tfevents.1525014672.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDurationFB/4 Layer Smaller Architecture/events.out.tfevents.1525014935.DESKTOP-O0KQ4QH" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/TensorBoard/HeroesDurationFB/4 Layer Smaller Architecture/events.out.tfevents.1525015388.DESKTOP-O0KQ4QH" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Predictor.py" afterPath="$PROJECT_DIR$/Predictor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/counter.npy" afterPath="$PROJECT_DIR$/counter.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/traindata.npy" afterPath="$PROJECT_DIR$/traindata.npy" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +25,7 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="0">
               <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -33,8 +37,8 @@
       <file leaf-file-name="Predictor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Predictor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="66" column="23" lean-forward="true" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+            <state relative-caret-position="240">
+              <caret line="146" column="61" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="188" selection-end-column="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -80,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-6" />
     <option name="y" value="1" />
     <option name="width" value="2572" />
@@ -113,12 +117,6 @@
               <item name="Dota2Predictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dota2Predictor" type="462c0819:PsiDirectoryNode" />
               <item name="TensorBoard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Dota2Predictor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Dota2Predictor" type="462c0819:PsiDirectoryNode" />
-              <item name="TensorBoard" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroesAndDuration" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -222,19 +220,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="1" width="2572" height="1405" extended-state="0" />
-    <editor active="true" />
+    <frame x="-6" y="1" width="2572" height="1405" extended-state="1" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11146497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33096927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33096927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3984375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39795116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32842356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -257,7 +254,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -467,7 +464,7 @@
     <entry file="file://$PROJECT_DIR$/traindataFinal.npy" />
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="0">
           <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -485,10 +482,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Results/HeroesDuration/7 Layer Architecture/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Predictor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="66" column="23" lean-forward="true" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+        <state relative-caret-position="240">
+          <caret line="146" column="61" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="188" selection-end-column="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
