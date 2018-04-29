@@ -66,25 +66,13 @@ model.add(Dropout(0.1))
 model.add(Dense(500, activation='sigmoid'))
 model.add(BatchNormalization())
 model.add(Dropout(0.1))
-model.add(Dense(1000, activation='sigmoid'))
-model.add(BatchNormalization())
-model.add(Dropout(0.1))
-model.add(Dense(300, activation='sigmoid'))
-model.add(BatchNormalization())
-model.add(Dropout(0.1))
-model.add(Dense(500, activation='sigmoid'))
-model.add(BatchNormalization())
-model.add(Dropout(0.1))
-model.add(Dense(100, activation='sigmoid'))
-model.add(BatchNormalization())
-model.add(Dropout(0.1))
 model.add(Dense(1, activation='sigmoid'))
 a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 #a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(optimizer=a, loss='binary_crossentropy', metrics=['accuracy'])
 patience = 100
 
-directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/HeroesDuration/7 Layer Architecture/'
+directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/HeroesDuration/3 Layer Architecture/'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
