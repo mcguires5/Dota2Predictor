@@ -11,7 +11,7 @@ lastCounter = np.load('counter.npy')
 
 api = dota2api.Initialise("9AD4E20AA4D2C0A43FA90ABB6E4AA5A6")
 api.set_raw_mode(1)
-numberOfMatches = 1000000
+numberOfMatches = 500000
 numOfMat = numberOfMatches/100
 for i in range(1, int(numOfMat+1)):
     try:

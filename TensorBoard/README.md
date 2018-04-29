@@ -1,0 +1,1 @@
+To view the results in tensorboard (Only if tensorflow is already installed on computer) start a command prompt in this folder and type "tensorboard --logdir=."

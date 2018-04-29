@@ -1,5 +1,3 @@
-from imblearn.over_sampling import SMOTE
-from collections import Counter
 import numpy as np
 import tensorflow as tf
 import os
@@ -15,23 +13,24 @@ my_data = np.load('traindata.npy')
 #d = my_data[0:, 1:len(my_data)+1]
 
 #Pull just heros
-d = my_data[0:, 1:-2]
+#np.random.shuffle(my_data)
+d = my_data[0:, 1:-1]
 l = my_data[0:, 0]
 
-
+from keras import regularizers
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation
 #from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
 from keras.utils import np_utils
 from keras.callbacks import EarlyStopping, Callback, TensorBoard
 from keras.optimizers import adam
-
+from sklearn.utils import class_weight
 
 
 nnscores = []
 forestscores = []
 svmscores = []
-epochs = 10000
+epochs = 2000
 batchsize = 20000
 
 truelabels = []
@@ -62,13 +61,13 @@ class Get_Val_Acc(Callback):
 
 
 model = Sequential()
-model.add(Dense(2000, input_shape=(len(xtrain[0, :]),), activation='relu'))
+model.add(Dense(1000, input_shape=(len(xtrain[0, :]),), activation='sigmoid'))
 model.add(Dropout(0.1))
-model.add(Dense(1000, activation='relu'))
+model.add(Dense(500, activation='sigmoid'))
 model.add(Dropout(0.1))
-model.add(Dense(500, activation='relu'))
+model.add(Dense(1000, activation='sigmoid'))
 model.add(Dropout(0.1))
-model.add(Dense(300, activation='relu'))
+model.add(Dense(300, activation='sigmoid'))
 model.add(Dropout(0.1))
 model.add(Dense(1, activation='sigmoid'))
 a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
@@ -76,17 +75,20 @@ a = adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(optimizer=a, loss='binary_crossentropy', metrics=['accuracy'])
 patience = 100
 
-directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/Heros/'
+directory = 'C:/Users/baseb/PycharmProjects/Dota2Predictor/TensorBoard/HeroesDuration/5 Layer Original Architecture/'
 if not os.path.exists(directory):
     os.makedirs(directory)
+
 tbCallBack = TensorBoard(log_dir=directory, histogram_freq=0, write_graph=True, write_grads=False, write_images=False)
 earlyStop = EarlyStopping(monitor='val_acc', patience=patience, min_delta=0, verbose=2, mode='auto')
-#class_weight = {0 : 30975., 1: 29290.}
+
+class_weight = class_weight.compute_class_weight('balanced', np.unique(ytrain), ytrain)
+class_weight_dict = dict(enumerate(class_weight))
 
 acc = Get_Val_Acc()  # object used to find max acc of training
-#removed early stop
-callbacks_list = [tbCallBack, earlyStop, acc]
-model.fit(xtrain, ytrain_hot, epochs=epochs, callbacks=callbacks_list,  validation_data=(xval, yval_hot),
+#callbacks_list = [tbCallBack, earlyStop, acc]
+callbacks_list = [tbCallBack, acc]
+model.fit(xtrain, ytrain_hot, epochs=epochs, callbacks=callbacks_list, class_weight=class_weight, validation_data=(xval, yval_hot),
           batch_size=batchsize, verbose=2, shuffle='true')
 score = model.evaluate(xval, yval_hot, verbose=2)
 
@@ -99,7 +101,7 @@ for i in range(0,len(predicted)):
         predictedlabels.append(0)
 truelabels = np.append(truelabels, yval)
 
-model.save('Heros')
+model.save('HeroesAndDuration.h5')
 
 # evaluate the model
 #print("max validation %s: %.2f%%" % (model.metrics_names[1], acc.max_acc * 100))
@@ -121,7 +123,7 @@ from pandas_ml import ConfusionMatrix
 
 cnf = ConfusionMatrix(truelabels, predictedlabels)
 import matplotlib.pyplot as plt
-cnf.print_stats()
+
 
 #####################################################################################################################
 import itertools
@@ -168,11 +170,11 @@ np.set_printoptions(precision=2)
 # Plot non-normalized confusion matrix
 plt.figure()
 plot_confusion_matrix(cnf_matrix, classes=[0,1],
-                      title='Confusion matrix, without normalization')
+                      title='Confusion Matrix - Heroes Duration')
 
 # Plot normalized confusion matrix
 plt.figure()
 plot_confusion_matrix(cnf_matrix, classes=[0,1], normalize=True,
-                     title='Normalized confusion matrix')
+                     title='Normalized Confusion Matrix - Heroes Duration')
 
 plt.show()
